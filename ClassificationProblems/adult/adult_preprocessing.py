@@ -158,6 +158,15 @@ def remove_edu_num(data):
     
     return transpose(columns)
 
+def remove_fnlwgt(data):
+    
+    columns = transpose(data)
+    
+    #delete 3rd column, education number
+    del columns[1]
+    
+    return transpose(columns)
+
 def pre_process(readpath, writepath):
     
     data = read_file(readpath)
@@ -166,6 +175,8 @@ def pre_process(readpath, writepath):
     
     #remove numerical value of education
     continuous = remove_edu_num(continuous)
+    #remove fnlwgt
+    continuous = remove_fnlwgt(continuous)
 
     #convert to correct format, and convert all '?' to np.NaN for impution
     int_categorical = discretize_data(categorical)
@@ -212,7 +223,7 @@ def pre_process(readpath, writepath):
     write_file(writepath, final_data)
  
 #process both training and testing files and save them as separate files
-pre_process("adult.txt","adult_onehot_2_countries_no_edu.txt")
+pre_process("adult.txt","adult_onehot_2_countries_no_edu_fnlwgt.txt")
 
 
 

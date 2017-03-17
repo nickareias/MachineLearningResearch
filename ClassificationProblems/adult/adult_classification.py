@@ -87,11 +87,11 @@ def train_net(training_data, testing_data, epochs):
     print("creating model")
     model = Sequential()
     model.add(Dense(hidden_neurons, input_dim=num_inputs, init='normal', activation='relu'))
-    model.add(Dense(num_classes, init='normal', activation='sigmoid'))
+    model.add(Dense(num_classes, init='normal', activation='softmax'))
     
     sgd = optimizers.SGD(lr=learning_rate, momentum=mom, decay=0.0, nesterov=False)
     
-    model.compile(loss='mean_squared_error', optimizer=sgd, metrics=['accuracy'])
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     
     start = time()
     
@@ -153,7 +153,7 @@ def get_avg_accuracies(results):
 ##########
 
 
-epochs = 200
+epochs = 50
 
 """
 results1 = train_net("adult_onehot.txt", epochs)
@@ -168,16 +168,16 @@ avg_max_results1 = np.mean([max(results1[i].history['val_acc']) for i in range(l
 avg_acc1 = get_avg_accuracies(results1)
 
 
-results2 = cross_validate("adult_integer.txt", 3, epochs)
+results2 = cross_validate("adult_onehot_2_countries.txt", 3, epochs)
 avg_max_results2 = np.mean([max(results2[i].history['val_acc']) for i in range(len(results2))])
 avg_acc2 = get_avg_accuracies(results2)
 
-results3 = cross_validate("adult_onehot_2_countries.txt", 3, epochs)
+results3 = cross_validate("adult_onehot_2_countries_no_edu.txt", 3, epochs)
 avg_max_results3 = np.mean([max(results3[i].history['val_acc']) for i in range(len(results3))])
 avg_acc3 = get_avg_accuracies(results3)
 
 
-results4 = cross_validate("adult_onehot_2_countries_no_edu.txt", 3, epochs)
+results4 = cross_validate("adult_onehot_2_countries_no_edu_fnlwgt.txt", 3, epochs)
 avg_max_results4 = np.mean([max(results4[i].history['val_acc']) for i in range(len(results4))])
 avg_acc4 = get_avg_accuracies(results4)
 
@@ -187,9 +187,9 @@ colors = ['teal', 'yellowgreen', 'gold', 'darkviolet']
 lw = 2
 
 plt.plot(e, avg_acc1, color = colors[0], label = "OH", linewidth = lw)
-plt.plot(e, avg_acc2, color = colors[1], label = "Integer", linewidth = lw)
-plt.plot(e, avg_acc3, color = colors[2], label = "OH US/Foreign", linewidth = lw)
-plt.plot(e, avg_acc4, color = colors[3], label = "OH US/Foreign\nno edu #", linewidth = lw)
+plt.plot(e, avg_acc2, color = colors[1], label = "OH US/Foreign", linewidth = lw)
+plt.plot(e, avg_acc3, color = colors[2], label = "OH US/Foreign\nno edu #", linewidth = lw)
+plt.plot(e, avg_acc4, color = colors[3], label = "OH US/Foreign\nno edu or fnlwgt", linewidth = lw)
 
 plt.legend(loc='lower right')
 plt.ylabel('accuracy')
