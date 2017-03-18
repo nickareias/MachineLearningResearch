@@ -91,7 +91,7 @@ def train_net(training_data, testing_data, epochs):
     
     sgd = optimizers.SGD(lr=learning_rate, momentum=mom, decay=0.0, nesterov=False)
     
-    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    model.compile(loss='mean_squared_error', optimizer=sgd, metrics=['accuracy'])
     
     start = time()
     
@@ -154,30 +154,23 @@ def get_avg_accuracies(results):
 
 
 epochs = 50
+n_folds = 3
 
-"""
-results1 = train_net("adult_onehot.txt", epochs)
-results2 = train_net("adult_integer.txt", epochs)
-results3 = train_net("adult_onehot_2_countries.txt", epochs)
-results4 = train_net("adult_onehot_2_countries_no_edu.txt", epochs)
-"""
-
-
-results1 = cross_validate("adult_onehot.txt", 3, epochs)
+results1 = cross_validate("adult_onehot.txt", n_folds, epochs)
 avg_max_results1 = np.mean([max(results1[i].history['val_acc']) for i in range(len(results1))])
 avg_acc1 = get_avg_accuracies(results1)
 
 
-results2 = cross_validate("adult_onehot_2_countries.txt", 3, epochs)
+results2 = cross_validate("adult_onehot_2_countries.txt", n_folds, epochs)
 avg_max_results2 = np.mean([max(results2[i].history['val_acc']) for i in range(len(results2))])
 avg_acc2 = get_avg_accuracies(results2)
 
-results3 = cross_validate("adult_onehot_2_countries_no_edu.txt", 3, epochs)
+results3 = cross_validate("adult_onehot_2_countries_no_edu.txt", n_folds, epochs)
 avg_max_results3 = np.mean([max(results3[i].history['val_acc']) for i in range(len(results3))])
 avg_acc3 = get_avg_accuracies(results3)
 
 
-results4 = cross_validate("adult_onehot_2_countries_no_edu_fnlwgt.txt", 3, epochs)
+results4 = cross_validate("adult_onehot_2_countries_no_edu_fnlwgt.txt", n_folds, epochs)
 avg_max_results4 = np.mean([max(results4[i].history['val_acc']) for i in range(len(results4))])
 avg_acc4 = get_avg_accuracies(results4)
 
@@ -205,10 +198,3 @@ plt.bar(ind,maxes,width)
 axes = plt.gca()
 axes.set_ylim([0.85,0.86])
 plt.show()
-"""
-axes = plt.gca()
-axes.set_xlim([-1,epochs])
-axes.set_ylim([0.82,0.86])
-"""
-
-#plt.show()
