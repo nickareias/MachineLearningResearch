@@ -2,7 +2,7 @@
 https://archive.ics.uci.edu/ml/datasets/Adult
 
 ## Abstract:
-I will use a neural network to classify this dataset.  The data is already split into training and testing data, but because of misrepresentation in the testing data, I will mix the two sets together and re-split them myself.  I will expirement on various architectures and parameter configurations.  I will explain the process I use to decide on these parameters and architecture.  Relevant findings will be included.
+I will use python with sci-kit learn to pre-process the data, and neural networks from Keras to classify.  The data is already split into training and testing data, but because of misrepresentation in the testing data, I will mix the two sets together and re-split them myself.  I will expirement on various architectures and parameter configurations.  I will explain the process I use to decide on these parameters and architecture.
 ## Preprocessing:
 * There are many categorical attributes in this dataset, so I will have to develop a strategy to convert them into a form that can be used with a neural network.
 * There is a categorical attribute for education, but also a number value for education.  I have considered omiting the categorical education variable.  Keeping it (in addition to the continuous education variable) should give more accuracy to the model because it will have more accurate information about the differences in education level.

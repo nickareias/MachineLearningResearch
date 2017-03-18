@@ -1,7 +1,8 @@
 # Classification on the Iris dataset
 https://archive.ics.uci.edu/ml/datasets/Iris 
 
-
+## Abstract
+I will use python with sci-kit learn to pre-process this dataset, and neural networks from Keras to classify.
 ## Information about Dataset:
 ##### This dataset contains 150 elements each with 5 attributes.  4 discrete attributes and one text classifier.  There are 3 classes each represented by 50 elements.
  

@@ -1,2 +1,2 @@
 # MachineLearningResearch
-This repository contains various test projects based on furthering my understanding of machine learning. I have utilized many machine learning techniques, and for each one I include my methods and analysis in the readme.
+This repository contains various test projects based on furthering my understanding of machine learning. I utilize many machine learning techniques, and for each one I include my methods and analysis in the readme.
