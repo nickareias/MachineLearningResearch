@@ -14,15 +14,15 @@ I will use a neural network to classify this dataset.  The data is already split
 * For the country data, 91% of it is from the united states.  Because of this, I will try encoding country with either US, or foreign.  I will also change any missing country elements to foreign.
 * The training data also had periods after each of the classifiers, while the testing data did not.  This made it so that there were 4 classifiers when there should have been 2.  I had to remove the periods before compiling the data.
 * After preliminary tests I tried different methods of converting categorical data to numerical.  They are stored in separate files:
-   1. adult_onehot – one hot encoding for all categorical data, no attributes removed
-   2. adult_integer – integer conversion for all categorical data, no attributes removed
-   3. adult_onehot_2_countries – onehot encoding, but countries are represented as either US or foreign.
-   4. adult_onehot_2_countries_no_edu – same as previous, but continuous education attribute is removed.  This should put more weight in the one-hot encoded categorical education attribute which should lead to more accurate results.  The number for education doesn't hold the correct information.  The difference between a high school graduate (9) and someone with their bachelors (13) is only 4.  this should probably be a much higher number.  The one-hot encoding for education will preserve the clear distinction between different levels of education.
+   * adult_onehot – one hot encoding for all categorical data, no attributes removed
+   * adult_integer – integer conversion for all categorical data, no attributes removed
+   * adult_onehot_2_countries – onehot encoding, but countries are represented as either US or foreign.
+   * adult_onehot_2_countries_no_edu – same as previous, but continuous education attribute is removed.  This should put more weight in the one-hot encoded categorical education attribute which should lead to more accurate results.  The number for education doesn't hold the correct information.  The difference between a high school graduate (9) and someone with their bachelors (13) is only 4.  this should probably be a much higher number.  The one-hot encoding for education will preserve the clear distinction between different levels of education.
 
 
 ## Observations:
 ##### After some preliminary trials I have gotten a classification accuracy of 86.28% on the test set.  These are decent results, but not as good as I hoped for.  My first insticts tell me that the remaining 14% has something to do with the way the categorical data was translated into numbers.  But I will try some different values for hyper parameters with this version of the data to see how much accuracy we can get out of it.	
-![alt text]("graphs/sgd_onehot_30_zoom.png" "Logo Title Text 1")
+![alt text](/files/graphs/sgd_onehot_30_zoom.png "Logo Title Text 1")
 ##### Classification accuracy starts at a reasonable number, and rises slowly and steadily.  The accuracies get erratic around the higher epoch ranges.  This is likely due to the learning rate being set too high.  
 
 
