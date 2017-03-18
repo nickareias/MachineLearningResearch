@@ -30,27 +30,3 @@ I will use a neural network to classify this dataset.  The data is already split
 ##### After trying a few different methods of converting categorical to numerical, the results of each method are extremely similar..  Converting to integers rather than one-hot encoding worsened the results, showing me that overall, one-hot encoding is better.  At this point, running this program is starting to take a long time, almost 12 minutes each time.  This is because to cross validate with splits of 1/3 it has to classify each dataset 3 times.  And with 50,000 elements per data set run through 100 epochs, runtimes start to get very long.  Judging from this graph however, it seems that cutting the epochs around 40 or 50 would be a good choice if I was trying to save time.  The increase after that point seems negligible.  After looking at the graph of 200 epochs, it seems like the purple line (the most up-to-date processing) has a slight advantage.  Also, after 100 epochs it seems like there is virtually no increase in accuracy.
 ![4 files 100](graphs/sgd_4types_100.png?raw=true) ![4 files 200](graphs/sgd_4types_200.png?raw=true)
 ##### In the end it seems like one hot encoding is the way to go (over integer encoding) but other than that, the data preparation didn't seem to change the outcome very much.  It must be that the attributes I changed didn't have much to do with the classifer.  This is actually good news because I was able to take out some of the unnecessary data from the set without compromising results. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-The next thing I would like to try is to find a different way of converting the categorical data into numerical.  Comparing these different methods might give some empirical evidence about the choices.
-	I would also like to expeiment with different structures of the neural network.  Adding dropout layers might yield some extra accuracy.
