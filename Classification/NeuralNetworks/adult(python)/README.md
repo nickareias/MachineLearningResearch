@@ -22,7 +22,7 @@ I will use a neural network to classify this dataset.  The data is already split
 
 ## Observations:
 ##### After some preliminary trials I have gotten a classification accuracy of 86.28% on the test set.  These are decent results, but not as good as I hoped for.  My first insticts tell me that the remaining 14% has something to do with the way the categorical data was translated into numbers.  But I will try some different values for hyper parameters with this version of the data to see how much accuracy we can get out of it.	
-![30 epochs](files/graphs/sgd_onehot_30_zoom.png?raw=true)
+![30 epochs](graphs/sgd_onehot_30_zoom.png?raw=true)
 ##### Classification accuracy starts at a reasonable number, and rises slowly and steadily.  The accuracies get erratic around the higher epoch ranges.  This is likely due to the learning rate being set too high.  
 
 
