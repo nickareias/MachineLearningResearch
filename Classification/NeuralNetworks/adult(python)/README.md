@@ -10,6 +10,7 @@ I will use a neural network to classify this dataset.  The data is already split
 * All continuous attributes will be min-max normalized
 * Class will be converted into an int value of (0, 1) corresponding to <=50k and >50k respectively.
 * 13% of the training data included at least one missing attribute, and some included more.
+* I imputed the missing data with most-frequent for categorical, and mean for continuous.
 * In the training data provided, one of the countries is not represented.  To remedy this, I mixed the data together to pre-process it all at once, splitting into training/testing will be done before classification.  A cross validation split will be utilized to ensure fair splitting of the data.
 * For the country data, 91% of it is from the united states.  Because of this, I will try encoding country with either US, or foreign.  I will also change any missing country elements to foreign.
 * The training data also had periods after each of the classifiers, while the testing data did not.  This made it so that there were 4 classifiers when there should have been 2.  I had to remove the periods before compiling the data.

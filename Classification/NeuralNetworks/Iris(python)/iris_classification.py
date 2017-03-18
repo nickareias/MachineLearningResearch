@@ -53,7 +53,7 @@ def vectorized_int(num):
                       
     return classifier
 
-training_data, testing_data = get_data("iris_data_preprocessed.txt")
+training_data, testing_data = get_data("data/iris_data_preprocessed.txt")
 
 #gets everything but last column (classifier) and store as numpy array
 x_train = np.array(transpose(transpose(training_data)[:-1]))

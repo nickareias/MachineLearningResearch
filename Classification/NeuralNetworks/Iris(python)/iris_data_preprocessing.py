@@ -83,8 +83,8 @@ def write_file(path, data):
     f.writelines(lines)
 
 def preprocess_data():
-    readpath = "iris_data.txt"
-    writepath = "iris_data_preprocessed.txt"
+    readpath = "data/iris_data.txt"
+    writepath = "data/iris_data_preprocessed.txt"
     
     data = read_file(readpath)
     normalized_data = normalize_data(data)
